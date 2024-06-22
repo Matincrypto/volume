@@ -1,0 +1,13 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © matincrypto0
+
+//@version=5 
+indicator("volume",shorttitle = "volume for TP & SL", overlay = false)
+
+def = input(defval = 70, title = "max volume")
+def2 = input(defval = 40, title = "min volume")
+max = ta.median(volume[50],def)*100
+min = ta.median(volume[26],def2)*100
+p1 = plot(max, color = color.red)  
+p2 = plot(min, color = color.blue)
+plotshape(ta.cross(min,max), location = location.bottom , style = shape.circle,color = color.green)
